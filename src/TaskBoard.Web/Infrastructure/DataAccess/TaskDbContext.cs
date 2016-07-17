@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using TaskBoard.Web.Infrastructure.Domain;
 
 namespace TaskBoard.Web.Infrastructure.DataAccess
 {
@@ -8,7 +9,9 @@ namespace TaskBoard.Web.Infrastructure.DataAccess
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Configurations.AddFromAssembly(GetType().Assembly); 
+            modelBuilder.Configurations.AddFromAssembly(GetType().Assembly);
         }
+
+        public DbSet<User> Users { get; set; }
     }
 }
