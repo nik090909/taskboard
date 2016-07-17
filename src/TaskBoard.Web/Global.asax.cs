@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Ninject;
+using Ninject.Web.Mvc;
 
 namespace TaskBoard.Web
 {
@@ -11,6 +13,10 @@ namespace TaskBoard.Web
     {
         protected void Application_Start()
         {
+            IKernel kernel = new StandardKernel();
+            //bind
+            DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
+
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
