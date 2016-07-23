@@ -134,6 +134,7 @@
     <Compile Include="Infrastructure\Domain\Entry.cs" />
     <Compile Include="Infrastructure\Domain\Project.cs" />
     <Compile Include="Infrastructure\Domain\User.cs" />
+    <Compile Include="Infrastructure\Helpers\CryptographyHelper.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Models\ViewModels\LoginModel.cs" />
     <Compile Include="Models\ViewModels\RegisterModel.cs" />

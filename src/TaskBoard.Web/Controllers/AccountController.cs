@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Security;
 using System.Web.Mvc;
 using TaskBoard.Web.Infrastructure.DataAccess;
 using TaskBoard.Web.Models.ViewModels;
 using TaskBoard.Web.Infrastructure.Domain;
+using TaskBoard.Web.Infrastructure.Helpers;
 
 namespace TaskBoard.Web.Controllers
 {
     public class AccountController : Controller
     {
-        TaskDbContext db = new TaskDbContext();
+        readonly TaskDbContext db = new TaskDbContext();
 
         [HttpGet]
         public ActionResult Login()
@@ -26,12 +29,22 @@ namespace TaskBoard.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = db.Users.FirstOrDefault(u => u.Name == model.Username && u.Password == model.Password);
+
+                var user = db.Users.FirstOrDefault(u => u.Login == model.Username);
+
 
                 if (user != null)
                 {
-                    FormsAuthentication.SetAuthCookie(model.Username, true);
-                    return RedirectToAction("Index", "Home");
+                    var hash = CryptographyHelper.GenerateHash(model.Password, user.PasswordSalt);
+                    if (hash == user.PasswordHash)
+                    {
+                        FormsAuthentication.SetAuthCookie(model.Username, true);
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Invalid username or password");
+                    }
                 }
                 else
                 {
@@ -58,9 +71,9 @@ namespace TaskBoard.Web.Controllers
 
                 if (user == null)
                 {
-
-
-                    db.Users.Add(new User { Name = model.Username, Password = model.Password });
+                    var salt = CryptographyHelper.GenerateSalt();
+                    var hash = CryptographyHelper.GenerateHash(model.Password, salt);
+                    db.Users.Add(new User { Login = model.Username, PasswordHash = hash, PasswordSalt = salt });
                     db.SaveChanges();
 
                     user = db.Users.Where(u => u.Name == model.Username && u.Password == model.Password).FirstOrDefault();
