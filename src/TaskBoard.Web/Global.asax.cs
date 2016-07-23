@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using Ninject;
 using Ninject.Web.Mvc;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace TaskBoard.Web
 {
