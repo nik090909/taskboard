@@ -9,12 +9,13 @@ using System.Web.Mvc;
 using TaskBoard.Web.Infrastructure.DataAccess;
 using TaskBoard.Web.Models.ViewModels;
 using TaskBoard.Web.Infrastructure.Domain;
+using TaskBoard.Web.Infrastructure.Helpers;
 
 namespace TaskBoard.Web.Controllers
 {
     public class AccountController : Controller
     {
-        TaskDbContext db = new TaskDbContext();
+        readonly TaskDbContext db = new TaskDbContext();
 
         [HttpGet]
         public ActionResult Login()
@@ -34,7 +35,7 @@ namespace TaskBoard.Web.Controllers
 
                 if (user != null)
                 {
-                    var hash = GenerateHash(model.Password, user.PasswordSalt);
+                    var hash = CryptographyHelper.GenerateHash(model.Password, user.PasswordSalt);
                     if (hash == user.PasswordHash)
                     {
                         FormsAuthentication.SetAuthCookie(model.Username, true);
@@ -70,8 +71,8 @@ namespace TaskBoard.Web.Controllers
 
                 if (user == null)
                 {
-                    var salt = GenerateSalt();
-                    var hash = GenerateHash(model.Password, salt);
+                    var salt = CryptographyHelper.GenerateSalt();
+                    var hash = CryptographyHelper.GenerateHash(model.Password, salt);
                     db.Users.Add(new User { Login = model.Username, PasswordHash = hash, PasswordSalt = salt });
                     db.SaveChanges();
 
@@ -97,27 +98,6 @@ namespace TaskBoard.Web.Controllers
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
-        }
-
-        public string GenerateSalt()
-        {
-            var salt = new byte[64];
-            using (var rng = new RNGCryptoServiceProvider())
-            {
-                rng.GetBytes(salt);
-            }
-            return Convert.ToBase64String(salt);
-        }
-
-        public string GenerateHash(string password, string salt)
-        {
-            var data = Encoding.UTF8.GetBytes(password + salt);
-            byte[] hash;
-            using (SHA512 sha512 = new SHA512Managed())
-            {
-                hash = sha512.ComputeHash(data);
-            }
-            return Convert.ToBase64String(hash);
         }
     }
 }
