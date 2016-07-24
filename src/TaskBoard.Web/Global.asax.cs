@@ -8,6 +8,7 @@ using Ninject;
 using Ninject.Web.Mvc;
 using System.Security.Cryptography;
 using System.Text;
+using TaskBoard.Web.App_Start;
 
 namespace TaskBoard.Web
 {
@@ -21,6 +22,7 @@ namespace TaskBoard.Web
 
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
         }
     }
 }

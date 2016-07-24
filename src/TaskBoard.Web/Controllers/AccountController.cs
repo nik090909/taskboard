@@ -13,6 +13,7 @@ using TaskBoard.Web.Infrastructure.Helpers;
 
 namespace TaskBoard.Web.Controllers
 {
+    [AllowAnonymous]
     public class AccountController : Controller
     {
         readonly TaskDbContext db = new TaskDbContext();
