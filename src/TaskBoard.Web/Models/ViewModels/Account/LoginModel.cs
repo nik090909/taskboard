@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TaskBoard.Web.Models.ViewModels
+namespace TaskBoard.Web.Models.ViewModels.Account
 {
     public class LoginModel
     {
