@@ -10,6 +10,7 @@ using TaskBoard.Web.Infrastructure.DataAccess;
 using TaskBoard.Web.Models.ViewModels;
 using TaskBoard.Web.Infrastructure.Domain;
 using TaskBoard.Web.Infrastructure.Helpers;
+using TaskBoard.Web.Models.Account;
 
 namespace TaskBoard.Web.Controllers
 {
