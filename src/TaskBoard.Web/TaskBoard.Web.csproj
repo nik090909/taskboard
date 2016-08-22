@@ -126,6 +126,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Attributes\GlobalExceptionFilter.cs" />
     <Compile Include="Infrastructure\DataAccess\Mappings\EntityMapping.cs" />
     <Compile Include="Infrastructure\DataAccess\Mappings\UserMapping.cs" />
     <Compile Include="Infrastructure\DataAccess\TaskDbContext.cs" />
@@ -150,6 +151,7 @@
     </Content>
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
