@@ -20,17 +20,11 @@ namespace TaskBoard.Web.Infrastructure.Attributes
                 return;
             }
 
-            Exception exception = filterContext.Exception;
+            var exception = filterContext.Exception;
 
-            if (!ExceptionType.IsInstanceOfType(exception))
-            {
-                return;
-            }
-
-            string controllerName = (string)filterContext.RouteData.Values["controller"];
-            string actionName = (string)filterContext.RouteData.Values["action"];
-            HandleErrorInfo model = new HandleErrorInfo(filterContext.Exception, controllerName, actionName);
-
+            var controllerName = filterContext.RouteData.GetRequiredString("controller");
+            var actionName = filterContext.RouteData.GetRequiredString("action");
+            var model = new HandleErrorInfo(filterContext.Exception, controllerName, actionName);
 
             filterContext.Result = new ViewResult
             {
@@ -43,10 +37,7 @@ namespace TaskBoard.Web.Infrastructure.Attributes
             filterContext.ExceptionHandled = true;
             filterContext.HttpContext.Response.Clear();
             filterContext.HttpContext.Response.StatusCode = new HttpException(null, exception).GetHttpCode();
-
             filterContext.HttpContext.Response.TrySkipIisCustomErrors = true;
-
-            //base.OnException(filterContext);
         }
     }
 }
