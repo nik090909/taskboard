@@ -122,7 +122,7 @@
     <Content Include="Content\JS\libs\jquery.ui\jquery-ui.js" />
     <Content Include="Content\CSS\libs\jquery.ui\jquery-ui.structure.css" />
     <Content Include="Content\CSS\libs\jquery.ui\jquery-ui.theme.css" />
-    <Content Include="Content\JS\libs\jquery\jquery-3.1.0.js" />
+    <Content Include="Content\JS\libs\jquery\jquery.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -177,8 +177,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\" />
-    <Folder Include="Models\Account\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>
   <PropertyGroup>
