@@ -112,24 +112,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\JS\libs\jquery.ui\AUTHORS.txt" />
-    <Content Include="Content\JS\libs\jquery.ui\external\jquery\jquery.js" />
-    <Content Include="Content\JS\libs\jquery.ui\images\ui-icons_444444_256x240.png" />
-    <Content Include="Content\JS\libs\jquery.ui\images\ui-icons_555555_256x240.png" />
-    <Content Include="Content\JS\libs\jquery.ui\images\ui-icons_777620_256x240.png" />
-    <Content Include="Content\JS\libs\jquery.ui\images\ui-icons_777777_256x240.png" />
-    <Content Include="Content\JS\libs\jquery.ui\images\ui-icons_cc0000_256x240.png" />
-    <Content Include="Content\JS\libs\jquery.ui\images\ui-icons_ffffff_256x240.png" />
-    <Content Include="Content\JS\libs\jquery.ui\index.html" />
+    <Content Include="Content\Images\libs\jquery.ui\ui-icons_444444_256x240.png" />
+    <Content Include="Content\Images\libs\jquery.ui\ui-icons_555555_256x240.png" />
+    <Content Include="Content\Images\libs\jquery.ui\ui-icons_777620_256x240.png" />
+    <Content Include="Content\Images\libs\jquery.ui\ui-icons_777777_256x240.png" />
+    <Content Include="Content\Images\libs\jquery.ui\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\Images\libs\jquery.ui\ui-icons_ffffff_256x240.png" />
     <Content Include="Content\CSS\libs\jquery.ui\jquery-ui.css" />
     <Content Include="Content\JS\libs\jquery.ui\jquery-ui.js" />
-    <Content Include="Content\JS\libs\jquery.ui\jquery-ui.min.css" />
-    <Content Include="Content\JS\libs\jquery.ui\jquery-ui.min.js" />
-    <Content Include="Content\JS\libs\jquery.ui\jquery-ui.structure.css" />
-    <Content Include="Content\JS\libs\jquery.ui\jquery-ui.structure.min.css" />
-    <Content Include="Content\JS\libs\jquery.ui\jquery-ui.theme.css" />
-    <Content Include="Content\JS\libs\jquery.ui\jquery-ui.theme.min.css" />
-    <Content Include="Content\JS\libs\jquery.ui\LICENSE.txt" />
+    <Content Include="Content\CSS\libs\jquery.ui\jquery-ui.structure.css" />
+    <Content Include="Content\CSS\libs\jquery.ui\jquery-ui.theme.css" />
     <Content Include="Content\JS\libs\jquery\jquery-3.1.0.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
@@ -170,8 +162,10 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Content\JS\libs\jquery.ui\package.json" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Content\CSS\app\config.less" />
+    <Content Include="Content\CSS\app\jquery.ui.fixes.less" />
+    <Content Include="Content\CSS\app\all.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
