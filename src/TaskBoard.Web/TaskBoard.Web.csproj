@@ -145,6 +145,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Attributes\GlobalExceptionFilter.cs" />
     <Compile Include="Infrastructure\DataAccess\Mappings\EntityMapping.cs" />
     <Compile Include="Infrastructure\DataAccess\Mappings\UserMapping.cs" />
     <Compile Include="Infrastructure\DataAccess\TaskDbContext.cs" />
@@ -172,6 +173,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Content\JS\libs\jquery.ui\package.json" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
